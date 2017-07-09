@@ -3,4 +3,6 @@
 !/Assets/
 !/ProjectSettings/
 !README.md
-test
+
+/Assets/Local/
+/Assets/Local.meta

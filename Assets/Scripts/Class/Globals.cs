@@ -71,8 +71,6 @@ public class Globals
     public static EAppStatus status = EAppStatus.init;
 
     public static EWormParts renderSwitch = (EWormParts)(1 + 2 + 4 + 8 + 16);
-    //public static EWormParts renderSwitch = (EWormParts)(1 + 2 + 4 + 8 + 16);
-
 }
 
 public enum EWormParts

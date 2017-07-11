@@ -6,7 +6,7 @@ public class Globals
     public static int done = 0;
 
     public static string ConfigPath = "/Resources/Configs/";
-    public static string NeuronPosFile =    Application.dataPath + ConfigPath + "celegans302positions.new.txt";
+    public static string NeuronPosFile =    Application.dataPath + ConfigPath + "celegans302positions.txt";
     public static string NeuronConnFile =   Application.dataPath + ConfigPath + "celegans302connections.txt";
     public static string NeuronMuscleFile = Application.dataPath + ConfigPath + "neuromuscle.txt";
     

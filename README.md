@@ -9,7 +9,7 @@ What's inside
 - Simulate muscle activity.(worm crawl)
 - Simulate neurons activate muscle.(worm crawl)
 
-Control keys:
+**Control keys**:
 ```
 	Camera:
 		W / S: move forward / backward.
@@ -26,11 +26,16 @@ Control keys:
 		Mouse left button: select neuron.
 ```
 
-Neuron Color:
+**Neuron Color**:
 ```
 	pink:		defult
 	sky blue:	DB..
-	grass green:VB..
+	grass green:	VB..
 	purple:		AVB
 	orange:		DVA
 ```
+
+Troubleshooting
+--------------------
+If you have any question or have a problem please contact with me.
+Email me on 124087198@qq.com. Or you can create an issue on GitHub.

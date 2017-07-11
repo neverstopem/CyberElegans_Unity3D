@@ -1,6 +1,8 @@
 # Neuromechanical model of C. Elegans
+
 Original project:https://github.com/openworm/CyberElegans
-Achieved with unity3d(5.6.2f1)
+
+Achieved with **unity3d**(5.6.2f1)
 
 What's inside
 -------------
@@ -8,6 +10,7 @@ What's inside
 - Connected neuron to muscle, and some neuron to neuron.
 - Simulate muscle activity.(worm crawl)
 - Simulate neurons activate muscle.(worm crawl)
+
 
 **Control keys**:
 ```

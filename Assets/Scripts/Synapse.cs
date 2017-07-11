@@ -25,12 +25,12 @@ public class Synapse : WormBase
     public void checkActivity()
     {
         /*
-       , if(income >= threshold) {
-           , activity = 1;
-       , } else {
-           , activity = 0;
-       , }
-       , */
+        if(income >= threshold) {
+            activity = 1;
+        } else {
+            activity = 0;
+        }
+       */
         //activity = min(income,1.f);
         income = Mathf.Min(income, 1);
 

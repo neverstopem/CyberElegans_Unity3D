@@ -24,11 +24,6 @@ public class Muscle : Synapse
         if ((Globals.renderSwitch & EWormParts.muscle) != 0) render = ResManager.CreateObject(EWormParts.muscle, color, 0.05f * Globals.scale);
     }
 
-    public void Copy(Muscle muscle)
-    {
-        strength = muscle.strength;
-    }
-
     public void Draw()
     {
         if (!render) return;

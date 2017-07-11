@@ -13,7 +13,7 @@ class Neuron : Synapse
     char mType;
     int mColorIdx;
     Color mColor, mColorSel, mColorPseSel, mColorAxon;
-    float size;
+    float sizeNormal, sizeSelect;
     CRenderObject render;
 
     public float ratioX { get { return mRatioX; } }
@@ -41,8 +41,9 @@ class Neuron : Synapse
         mColor = Globals.colors[clr_index];
         mColorPseSel = Color.red;
         mColorSel = Color.green;
-        size = 0.005f * Globals.scale;
-        if ((Globals.renderSwitch & EWormParts.neuron) != 0) render = ResManager.CreateObject(EWormParts.neuron, Color.red, size);
+        sizeNormal = Globals.neuron_normal;
+        sizeSelect = Globals.neuron_selected;
+        if ((Globals.renderSwitch & EWormParts.neuron) != 0) render = ResManager.CreateObject(EWormParts.neuron, Color.red, sizeNormal);
     }
 
     ~Neuron() {
@@ -90,9 +91,9 @@ class Neuron : Synapse
         if (select) {
             if (pseudoneuron) c = mColorPseSel;
             else c = mColorSel;
-            render.Setup(c, size * 2);
+            render.Setup(c, sizeSelect);
         } else {
-            render.Setup(c, size);
+            render.Setup(c, sizeNormal);
         }
 
         render.Draw(rpos);
@@ -264,7 +265,7 @@ class Neuron : Synapse
 
         string neuron_name = name;
 
-        if(Globals.key_a && select) {
+        if(Globals.neuron_active && select) {
             //activity = 1.f;
             //if(cnt>0)
             {

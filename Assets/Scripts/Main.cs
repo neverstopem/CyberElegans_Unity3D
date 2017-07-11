@@ -7,18 +7,29 @@ public class Main : MonoBehaviour {
     float lastSecond = -1;
 
     void Start () {
+        // notice: camera control keys, please see the CameraCtrl.cs:Update
+
         KeysMan.AddKeyEvent(KeyCode.Escape, Application.Quit);
+        KeysMan.AddKeyEvent(KeyCode.F, ToggleNeuronActive);
         KeysMan.AddKeyEvent(KeyCode.F1, ToggleShowInfo);
         KeysMan.AddKeyEvent(KeyCode.F2, ToggleGravity);
-        KeysMan.AddKeyEvent(KeyCode.F3, ToggleCrawl);
+        KeysMan.AddKeyEvent(KeyCode.F3, ToggleMuscle);
         KeysMan.AddKeyEvent(KeyCode.F4, ToggleNeuron);
-        KeysMan.AddKeyEvent(KeyCode.Mouse0, checkCollision);
-        
+        KeysMan.AddKeyEvent(KeyCode.Mouse0, checkCollision);        // use to select neurons.
+
         UIMan.Inst.SetText(0, null, "Show/Hide Infomation (F1)");
 
         Init();
     }
 
+    /// <summary>
+    /// active/deactive selected neurons.
+    /// </summary>
+    void ToggleNeuronActive() { Globals.neuron_active = !Globals.neuron_active; }
+
+    /// <summary>
+    /// show/hide debug infomations.
+    /// </summary>
     void ToggleShowInfo() {
         if (lastSecond == float.MaxValue) lastSecond = Time.time;
         else {
@@ -26,9 +37,17 @@ public class Main : MonoBehaviour {
             for (int i = 1; i < 9; i++) UIMan.Inst.SetText(i, "", "");
         }
     }
-    void ToggleGravity() { Globals.mode2 = !Globals.mode2; }
-    void ToggleCrawl() { Globals.mode3 = !Globals.mode3; }
-    void ToggleNeuron() { Globals.mode4 = !Globals.mode4; }
+
+    /// <summary>
+    /// use/not use gravity.
+    /// </summary>
+    void ToggleGravity() { Globals.applyGravity = !Globals.applyGravity; }
+
+    /// <summary>
+    /// start/stop worm crawling
+    /// </summary>
+    void ToggleMuscle() { Globals.muscleSimulate = !Globals.muscleSimulate; Globals.neuronSimulate = false; }
+    void ToggleNeuron() { Globals.neuronSimulate = !Globals.neuronSimulate; Globals.muscleSimulate = false; }
     void Init()
     {
         if (worm != null) return;
@@ -49,9 +68,10 @@ public class Main : MonoBehaviour {
     void Update()
     {
         if (Time.time > lastSecond + 0.1f) {
-            UIMan.Inst.SetText(1, "Gravity (F2):", Globals.mode2);
-            UIMan.Inst.SetText(2, "Crawling (F3):", Globals.mode3);
-            UIMan.Inst.SetText(3, "Neuron (F4):", Globals.mode4);
+            UIMan.Inst.SetText(1, "Apply Gravity (F2):", Globals.applyGravity);
+            UIMan.Inst.SetText(2, "Muscle Simulate (F3):", Globals.muscleSimulate);
+            UIMan.Inst.SetText(3, "Neuron Simulate (F4):", Globals.neuronSimulate);
+            UIMan.Inst.SetText(3, "Active Neurons (F):", Globals.neuron_active);
             lastSecond = Time.time;
         }
 
@@ -62,7 +82,6 @@ public class Main : MonoBehaviour {
             Draw();
         }
     }
-
 
     void UpdateLogic()
     {
@@ -83,7 +102,7 @@ public class Main : MonoBehaviour {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit)) {
-            Debug.Log(hit.collider.name);
+            //Debug.Log(hit.collider.name);
             
             const string n = "neuron ";
             string str = hit.collider.name;

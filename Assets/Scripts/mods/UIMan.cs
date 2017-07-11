@@ -1,4 +1,4 @@
-﻿/* author: em
+/* author: em
  *  email: neverstopem@gmail.com
  */
 
@@ -11,7 +11,6 @@ public class UIMan : MonoBehaviour
     static UIMan mInst;
     public static UIMan Inst { get { return mInst; } }
 
-    GameObject dbgInfo;
     List<Text> titles;
     List<Text> values;
 

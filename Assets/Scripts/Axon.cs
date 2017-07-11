@@ -5,7 +5,7 @@ public class Axon
     CRenderObject render;
     protected float mWeight;
     protected Synapse mSynapse;
-    float size;
+    float sizeNormal, sizeSelect;
 
     public Vector3 getPos()
     {
@@ -15,8 +15,9 @@ public class Axon
     {
         mWeight = weight;
         mSynapse = synapse;
-        size = 0.001f * Globals.scale;
-        if ((Globals.renderSwitch & EWormParts.axon) != 0) render = ResManager.CreateObject(EWormParts.axon, Color.red, size);
+        sizeNormal = Globals.axon_normal;
+        sizeSelect = Globals.axon_selected;
+        if ((Globals.renderSwitch & EWormParts.axon) != 0) render = ResManager.CreateObject(EWormParts.axon, Color.red, sizeNormal);
     }
 
     public void send(float senderActivity)
@@ -36,8 +37,8 @@ public class Axon
     public void Draw(Vector3 p1, Vector3 p2, Color c, bool select = false)
     {
         if (!render) return;
-        float width = size;
-        if (select) width = size * 2;
+        float width = sizeNormal;
+        if (select) width = sizeSelect;
 
         render.Setup(c, width);
         render.Draw(p1, p2);

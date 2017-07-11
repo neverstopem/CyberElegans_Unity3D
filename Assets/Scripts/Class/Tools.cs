@@ -1,4 +1,4 @@
-﻿/* author: em
+/* author: em
  *  email: neverstopem@gmail.com
  */
 

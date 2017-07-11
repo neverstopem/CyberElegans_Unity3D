@@ -11,7 +11,7 @@ What's inside
 - Simulate muscle activity.(worm crawl)
 - Simulate neurons activate muscle.(worm crawl)
 
-
+-------------
 **Control keys**:
 ```
 	Camera:
